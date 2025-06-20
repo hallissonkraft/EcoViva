@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dicas Sustentáveis - EcoViva</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="topo">
+      <img src="../images/logo-ecoviva.png" alt="Logo EcoViva" class="logo" />
+      <h1>EcoViva</h1>
+      <nav class="navegacao">
+        <a href="../index.html">Início</a>
+        <a href="dicas.html">Dicas</a>
+        <a href="mapa.html">Mapa</a>
+        <a href="contato.html">Contato</a>
+        <a href="desafios.html">Desafios</a>
+        <a href="denuncias.html">Denúncias</a>
+        <a href="simulador.html">Simulador</a>
+        <button
+          id="toggleTema"
+          style="margin-top: 1rem; padding: 0.5rem 1rem; border-radius: 5px; border: none; background: #a2d149; color: #fff; cursor: pointer;"
+        >
+          🌗 Alternar Tema
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>Economia de Água</h2>
+      <ul>
+        <li>Feche a torneira enquanto escova os dentes ou ensaboa as mãos.</li>
+        <li>Use balde para lavar o carro ou varrer a calçada ao invés de mangueira.</li>
+        <li>Conserte vazamentos imediatamente para evitar desperdício.</li>
+        <li>Reutilize água da chuva para regar plantas.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Redução de Resíduos</h2>
+      <ul>
+        <li>Prefira produtos com embalagens recicláveis ou reutilizáveis.</li>
+        <li>Leve suas próprias sacolas reutilizáveis para compras.</li>
+        <li>Evite descartáveis, especialmente plásticos de uso único.</li>
+        <li>Separe e destine corretamente seu lixo reciclável.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Consumo Consciente</h2>
+      <ul>
+        <li>Compre de pequenos produtores locais para fortalecer a economia da região.</li>
+        <li>Prefira produtos orgânicos e com menor impacto ambiental.</li>
+        <li>Planeje suas compras para evitar desperdício de alimentos.</li>
+        <li>Considere produtos duráveis ao invés de descartáveis.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Energia e Transporte</h2>
+      <ul>
+        <li>Desligue aparelhos eletrônicos quando não estiver usando.</li>
+        <li>Prefira lâmpadas de LED, que consomem menos energia.</li>
+        <li>Use transporte coletivo, bicicleta ou caminhe sempre que possível.</li>
+        <li>Aproveite a luz natural durante o dia para reduzir o uso de iluminação artificial.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Educação e Participação</h2>
+      <ul>
+        <li>Participe de eventos locais sobre sustentabilidade.</li>
+        <li>Compartilhe informações e práticas sustentáveis com amigos e familiares.</li>
+        <li>Incentive escolas e empresas a adotarem práticas ambientais responsáveis.</li>
+        <li>Esteja atento às políticas públicas e apoie iniciativas ambientais.</li>
+      </ul>
+    </section>
+
+    <div style="text-align:center;">
+      <a href="../index.html" class="btn-link">← Voltar para a Página Principal</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 EcoViva - Conscientização Sustentável em Brazlândia</p>
+  </footer>
+
+  <script>
+    const toggleButton = document.getElementById('toggleTema');
+    const body = document.body;
+
+    if (localStorage.getItem('tema') === 'dark') {
+      body.classList.add('dark');
+    }
+
+    toggleButton.addEventListener('click', () => {
+      body.classList.toggle('dark');
+      const temaAtual = body.classList.contains('dark') ? 'dark' : 'light';
+      localStorage.setItem('tema', temaAtual);
+    });
+  </script>
+</body>
+</html>

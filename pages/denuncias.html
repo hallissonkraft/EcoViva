@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Central de Denúncias - EcoViva</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="topo">
+      <img src="../images/logo-ecoviva.png" alt="Logo EcoViva" class="logo" />
+      <h1>EcoViva</h1>
+      <nav class="navegacao">
+        <a href="../index.html">Início</a>
+        <a href="dicas.html">Dicas</a>
+        <a href="mapa.html">Mapa</a>
+        <a href="contato.html">Contato</a>
+        <a href="desafios.html">Desafios</a>
+        <a href="denuncias.html">Denúncias</a>
+        <a href="simulador.html">Simulador</a>
+      </nav>
+      <button id="toggleTema" style="margin-top: 1rem; padding: 0.5rem 1rem; border-radius: 5px; border: none; background: #a2d149; color: #fff; cursor: pointer;">
+        🌗 Alternar Tema
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>📢 Central de Denúncias Ambientais</h2>
+      <p>
+        Se você presenciou alguma ação que prejudica o meio ambiente, como queimadas ilegais,
+        descarte irregular de lixo ou maus-tratos à natureza, denuncie aqui de forma rápida e segura.
+      </p>
+    </section>
+
+    <section>
+      <h2>📨 Formulário de Denúncia</h2>
+      <form id="formDenuncia">
+        <label for="nome">Seu nome (opcional):</label>
+        <input type="text" id="nome" name="nome" placeholder="Nome" />
+
+        <label for="email">E-mail para contato (opcional):</label>
+        <input type="email" id="email" name="email" placeholder="email@exemplo.com" />
+
+        <label for="tipo">Tipo de Ocorrência:</label>
+        <select id="tipo" name="tipo" required>
+          <option value="">Selecione</option>
+          <option value="lixo">Descarte irregular de lixo</option>
+          <option value="queimada">Queimadas</option>
+          <option value="maus-tratos">Maus-tratos à natureza</option>
+          <option value="outros">Outros</option>
+        </select>
+
+        <label for="local">Local da Ocorrência:</label>
+        <input type="text" id="local" name="local" placeholder="Endereço ou ponto de referência" required />
+
+        <label for="descricao">Descrição da Ocorrência:</label>
+        <textarea id="descricao" name="descricao" rows="4" placeholder="Descreva com detalhes o que aconteceu..." required></textarea>
+
+        <button type="submit">Enviar Denúncia</button>
+      </form>
+      <p id="feedback" style="margin-top: 1rem; font-weight: 600;"></p>
+    </section>
+
+    <section>
+      <h2>📞 Canais Oficiais</h2>
+      <p>Você também pode denunciar por meio de canais governamentais:</p>
+      <ul>
+        <li><strong>Disque 197:</strong> Polícia Civil - Denúncias anônimas</li>
+        <li><strong>IBRAM:</strong> Instituto Brasília Ambiental - <a href="https://www.ibram.df.gov.br/" target="_blank">ibram.df.gov.br</a></li>
+        <li><strong>Ouvidoria DF:</strong> <a href="https://www.ouv.df.gov.br" target="_blank">www.ouv.df.gov.br</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 EcoViva - Conscientização Sustentável em Brazlândia</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById('formDenuncia');
+    const feedback = document.getElementById('feedback');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      feedback.textContent = 'Denúncia enviada com sucesso! Obrigado por contribuir com a preservação ambiental.';
+      form.reset();
+    });
+
+    const toggleButton = document.getElementById('toggleTema');
+    const body = document.body;
+
+    if (localStorage.getItem('tema') === 'dark') {
+      body.classList.add('dark');
+    }
+
+    toggleButton.addEventListener('click', () => {
+      body.classList.toggle('dark');
+      const temaAtual = body.classList.contains('dark') ? 'dark' : 'light';
+      localStorage.setItem('tema', temaAtual);
+    });
+  </script>
+</body>
+</html>

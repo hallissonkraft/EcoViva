@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EcoViva - Conscientização Sustentável</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="topo">
+      <img src="images/logo-ecoviva.png" alt="Logo EcoViva" class="logo">
+      <h1>EcoViva</h1>
+      <nav class="navegacao">
+        <a href="pages/dicas.html">Dicas</a>
+        <a href="pages/mapa.html">Mapa</a>
+        <a href="pages/contato.html">Contato</a>
+        <a href="pages/desafios.html">Desafios</a>
+        <a href="pages/denuncias.html">Denúncias</a>
+        <a href="pages/simulador.html">Simulador</a>
+      </nav>
+      <button id="toggleTema" style="margin-top: 1rem; padding: 0.5rem 1rem; border-radius: 5px; border: none; background: #a2d149; color: #fff; cursor: pointer;">
+        🌗 Alternar Tema
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h2>Por que a sustentabilidade importa?</h2>
+      <p>
+        A sustentabilidade é essencial para preservar os recursos naturais, proteger a biodiversidade e garantir qualidade de vida para as gerações futuras.
+        Ela envolve escolhas conscientes no dia a dia, reduzindo o desperdício, economizando recursos e promovendo o respeito ao meio ambiente.
+      </p>
+      <p>
+        O <strong>EcoViva</strong> nasceu com o propósito de envolver a população de Brazlândia em ações sustentáveis práticas e educativas.
+        A proposta é incentivar a mudança de hábitos por meio de desafios semanais, dicas, eventos e informações úteis, promovendo o bem-estar coletivo e ambiental.
+      </p>
+      <p>
+        Uma das formas mais simples e poderosas de contribuir com o planeta é <strong>plantar</strong>. Cultivar hortas, árvores frutíferas ou temperos em casa ajuda a melhorar o solo, o ar e a alimentação.
+        Além disso, promove a conexão com a natureza e o fortalecimento da comunidade.
+      </p>
+    </section>
+
+    <section class="agricultura">
+      <h2>Agricultura Familiar em Brazlândia</h2>
+      <p>
+        A <strong>agricultura familiar</strong> em Brazlândia, no Distrito Federal, é um pilar fundamental para a economia, a segurança alimentar e a preservação ambiental da região.
+        Cerca de <strong>75% dos produtores rurais do DF</strong> são agricultores familiares, e Brazlândia se destaca como um dos maiores polos agrícolas, especialmente na produção de <strong>morangos</strong>.
+      </p>
+
+      <h3>🌽 Produção Diversificada:</h3>
+      <ul>
+        <li>Morango, mandioca, milho, hortaliças e legumes;</li>
+        <li>Temperos, frutas, castanhas, mel e peixes;</li>
+        <li>Pães e produtos artesanais direto do campo.</li>
+      </ul>
+
+      <h3>💰 Importância Econômica:</h3>
+      <ul>
+        <li>Geração de renda e emprego para famílias da região;</li>
+        <li>Movimentação da economia local e mercados regionais.</li>
+      </ul>
+
+      <h3>🌱 Sustentabilidade e Meio Ambiente:</h3>
+      <ul>
+        <li>Adoção de práticas agroecológicas e sem agrotóxicos;</li>
+        <li>Preservação de nascentes e recuperação de áreas degradadas.</li>
+      </ul>
+
+      <h3>📢 Apoio e Participação:</h3>
+      <ul>
+        <li>Programas como o <strong>PAA</strong> e apoio da <strong>Emater-DF</strong> auxiliam na produção e no escoamento;</li>
+        <li>Participação em feiras como a <strong>AgroBrasília</strong>, promovendo a produção local.</li>
+      </ul>
+
+      <h3>📌 Desafios e Oportunidades:</h3>
+      <ul>
+        <li>Melhorar o acesso à terra e crédito rural;</li>
+        <li>Fortalecer canais de venda e preços justos;</li>
+        <li>Investir em tecnologias e capacitação contínua.</li>
+      </ul>
+
+      <p>
+        Em resumo, a agricultura familiar é vital para garantir <strong>alimentos frescos e saudáveis</strong>,
+        proteger o meio ambiente e impulsionar o <strong>desenvolvimento rural sustentável</strong> em Brazlândia e no Distrito Federal.
+      </p>
+    </section>
+
+    <div class="btn-group">
+      <a href="pages/dicas.html" class="btn-link">🌿 Ver Dicas</a>
+      <a href="pages/mapa.html" class="btn-link">📍 Ver Mapa</a>
+      <a href="pages/contato.html" class="btn-link">📞 Fale Conosco</a>
+    </div>
+  </main>
+
+  <script>
+    const toggleButton = document.getElementById('toggleTema');
+    const body = document.body;
+
+    // Aplica o tema salvo
+    if (localStorage.getItem('tema') === 'dark') {
+      body.classList.add('dark');
+    }
+
+    toggleButton.addEventListener('click', () => {
+      body.classList.toggle('dark');
+      const temaAtual = body.classList.contains('dark') ? 'dark' : 'light';
+      localStorage.setItem('tema', temaAtual);
+    });
+  </script>
+
+  <footer>
+    <p>© 2025 EcoViva - Conscientização Sustentável em Brazlândia-DF</p>
+  </footer>
+</body>
+</html>

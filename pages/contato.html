@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contato - EcoViva</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="topo">
+      <img src="../images/logo-ecoviva.png" alt="Logo EcoViva" class="logo" />
+      <h1>EcoViva</h1>
+      <nav class="navegacao">
+        <a href="dicas.html">Dicas</a>
+        <a href="mapa.html">Mapa</a>
+        <a href="contato.html">Contato</a>
+        <a href="desafios.html">Desafios</a>
+        <a href="denuncias.html">Denúncias</a>
+        <a href="simulador.html">Simulador</a>
+        <button id="toggleTema" style="margin-top: 1rem; padding: 0.5rem 1rem; border-radius: 5px; border: none; background: #a2d149; color: #fff; cursor: pointer;">
+          🌗 Alternar Tema
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>Informações de Contato</h2>
+      <div class="info-list">
+        <p>
+          <strong>Administração Regional de Brazlândia:</strong><br />
+          ☎️ (61) 3550-6338<br />
+          📧 ascombrazraiv@gmail.com
+        </p>
+
+        <p>
+          <strong>Secretaria de Meio Ambiente - DF:</strong><br />
+          ☎️ (61) 2141-5800<br />
+          📧 ascom@sema.df.gov.br
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Envie uma Mensagem</h2>
+      <form id="formContato">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" placeholder="Seu nome" required />
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" placeholder="seu@email.com" required />
+
+        <label for="mensagem">Mensagem:</label>
+        <textarea id="mensagem" name="mensagem" rows="4" placeholder="Escreva sua dúvida ou sugestão..." required></textarea>
+
+        <button type="submit">Enviar</button>
+      </form>
+      <p id="feedback" style="margin-top: 1rem; font-weight: 600;"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 EcoViva - Conscientização Sustentável em Brazlândia</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById('formContato');
+    const feedback = document.getElementById('feedback');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      feedback.textContent = 'Mensagem enviada com sucesso! Entraremos em contato.';
+      form.reset();
+    });
+  </script>
+
+  <script>
+    const toggleButton = document.getElementById('toggleTema');
+    const body = document.body;
+
+    // Aplica o tema salvo
+    if (localStorage.getItem('tema') === 'dark') {
+      body.classList.add('dark');
+    }
+
+    toggleButton.addEventListener('click', () => {
+      body.classList.toggle('dark');
+      const temaAtual = body.classList.contains('dark') ? 'dark' : 'light';
+      localStorage.setItem('tema', temaAtual);
+    });
+  </script>
+</body>
+</html>

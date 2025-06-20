@@ -1,0 +1,294 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: #e6f0e6;
+  color: #2f4f2f;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Cabeçalho */
+header .topo {
+  padding: 1rem;
+  background-color: #e7f3e7;
+  border-bottom: 1px solid #cde0cd;
+  text-align: center;
+}
+
+header .topo h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: #3a6b35;
+}
+
+.logo {
+  width: 80px;
+  height: auto;
+  margin-bottom: 0.5rem;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+/* Navegação */
+.navegacao {
+  margin-top: 0.5rem;
+}
+
+.navegacao a {
+  margin: 0 0.6rem;
+  color: #3a6b35;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.navegacao a:hover {
+  text-decoration: underline;
+}
+
+nav a {
+  color: white;
+  margin-right: 1.5rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #a2d149;
+}
+
+/* Animações */
+h1 {
+  margin-bottom: 0.3rem;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Conteúdo principal */
+main {
+  flex: 1;
+  max-width: 900px;
+  margin: 1rem auto 2rem auto;
+  padding: 0 1rem;
+}
+
+section {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #cde0cd;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  transition: box-shadow 0.3s;
+}
+
+section:hover {
+  box-shadow: 0 0 18px #9ccc65;
+}
+
+h2 {
+  margin-bottom: 1rem;
+  color: #3a6b35;
+  border-bottom: 2px solid #a2d149;
+  padding-bottom: 0.3rem;
+  animation: slideIn 1s ease forwards;
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+ul {
+  list-style: inside disc;
+  margin-top: 0.8rem;
+}
+
+/* Botões */
+a.btn-link {
+  background: #3a6b35;
+  color: white;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block;
+  margin-top: 1rem;
+  transition: background-color 0.3s;
+  font-weight: 600;
+}
+
+a.btn-link:hover {
+  background: #274e22;
+}
+
+a.btn-link {
+  background: #3a6b35;
+  color: white;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.85rem;
+  text-decoration: none;
+  border-radius: 4px;
+  display: inline-block;
+  margin-top: 1rem;
+  transition: background-color 0.3s;
+  font-weight: 500;
+}
+
+/* Imagens */
+.img-section {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-top: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.img-ilustracao {
+  width: 250px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Formulários */
+form {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+}
+
+label {
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+
+input,
+textarea {
+  margin-bottom: 1rem;
+  padding: 0.6rem;
+  border-radius: 5px;
+  border: 1px solid #a2d149;
+  font-size: 1rem;
+  font-family: inherit;
+  resize: vertical;
+}
+
+button[type="submit"] {
+  background: #3a6b35;
+  color: white;
+  font-weight: 700;
+  border: none;
+  padding: 0.7rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+  background: #274e22;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  background: #d4e2d4;
+  color: #3a6b35;
+  margin-top: auto;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  header,
+  main,
+  section {
+    padding: 1rem;
+  }
+
+  nav a {
+    margin-right: 1rem;
+  }
+
+  form {
+    max-width: 100%;
+  }
+}
+
+/* MODO ESCURO */
+body.dark {
+  background: #1e1e1e;
+  color: #f0f0f0;
+}
+
+body.dark header .topo {
+  background-color: #2b2b2b;
+  border-bottom: 1px solid #444;
+}
+
+body.dark .navegacao a {
+  color: #a2d149;
+}
+
+body.dark section {
+  background: #2c2c2c;
+  box-shadow: 0 0 10px #555;
+}
+
+body.dark section:hover {
+  box-shadow: 0 0 18px #88c057;
+}
+
+body.dark h2 {
+  border-bottom-color: #88c057;
+  color: #a2d149;
+}
+
+body.dark a.btn-link {
+  background: #88c057;
+  color: #1e1e1e;
+}
+
+body.dark a.btn-link:hover {
+  background: #a2d149;
+}
+
+body.dark input,
+body.dark textarea {
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+  border: 1px solid #88c057;
+}
+
+body.dark footer {
+  background: #2b2b2b;
+  color: #88c057;
+}
+
+/* Container do simulador */
+.simulador-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simulador de Pegada de Carbono - EcoViva</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="topo">
+      <img src="../images/logo-ecoviva.png" alt="Logo EcoViva" class="logo">
+      <h1>EcoViva</h1>
+      <nav class="navegacao">
+        <a href="../index.html">Início</a>
+        <a href="dicas.html">Dicas</a>
+        <a href="mapa.html">Mapa</a>
+        <a href="contato.html">Contato</a>
+        <a href="desafios.html">Desafios</a>
+        <a href="simulador.html">Simulador</a>
+      </nav>
+      <button id="toggleTema" style="margin-top: 1rem; padding: 0.5rem 1rem; border-radius: 5px; border: none; background: #a2d149; color: #fff; cursor: pointer;">
+        🌗 Alternar Tema
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>🧪 Simulador: Reduzindo sua Pegada de Carbono</h2>
+      <p>Responda algumas perguntas simples e veja como pequenas mudanças podem reduzir sua emissão de CO₂ mensal.</p>
+
+      <div class="simulador-container">
+        <form id="formSimulador">
+          <label for="transporte">Qual seu principal meio de transporte diário?</label>
+          <select id="transporte" required>
+            <option value="">Selecione</option>
+            <option value="carro">Carro individual</option>
+            <option value="moto">Moto</option>
+            <option value="onibus">Ônibus/Transporte público</option>
+            <option value="bike">Bicicleta / Caminhada</option>
+          </select><br><br>
+
+          <label for="energia">Qual o seu consumo médio de energia mensal?</label>
+          <select id="energia" required>
+            <option value="">Selecione</option>
+            <option value="baixo">Até 150 kWh</option>
+            <option value="medio">151 a 300 kWh</option>
+            <option value="alto">Acima de 300 kWh</option>
+          </select><br><br>
+
+          <label for="alimentacao">Com que frequência você consome carne vermelha?</label>
+          <select id="alimentacao" required>
+            <option value="">Selecione</option>
+            <option value="diaria">Todos os dias</option>
+            <option value="moderada">3 a 4 vezes por semana</option>
+            <option value="baixa">1 a 2 vezes por semana</option>
+            <option value="vegano">Raramente ou nunca</option>
+          </select><br><br>
+
+          <button type="submit">Calcular Pegada</button>
+        </form>
+
+        <img src="../images/simulador.png" alt="Ilustração Pegada de Carbono" class="img-ilustracao">
+      </div>
+
+      <div id="resultado" style="display: none; margin-top: 2rem;">
+        <h3>Resultado Estimado</h3>
+        <p id="mensagemResultado"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 EcoViva - Conscientização Sustentável em Brazlândia</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById('formSimulador');
+    const resultado = document.getElementById('resultado');
+    const mensagemResultado = document.getElementById('mensagemResultado');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const transporte = document.getElementById('transporte').value;
+      const energia = document.getElementById('energia').value;
+      const alimentacao = document.getElementById('alimentacao').value;
+
+      let co2 = 0;
+
+      // Transporte
+      switch (transporte) {
+        case 'carro': co2 += 200; break;
+        case 'moto': co2 += 120; break;
+        case 'onibus': co2 += 60; break;
+        case 'bike': co2 += 0; break;
+      }
+
+      // Energia
+      switch (energia) {
+        case 'baixo': co2 += 50; break;
+        case 'medio': co2 += 120; break;
+        case 'alto': co2 += 200; break;
+      }
+
+      // Alimentação
+      switch (alimentacao) {
+        case 'diaria': co2 += 180; break;
+        case 'moderada': co2 += 120; break;
+        case 'baixa': co2 += 60; break;
+        case 'vegano': co2 += 10; break;
+      }
+
+      let mensagem = `🌍 Sua estimativa mensal de emissão é <strong>${co2} kg de CO₂</strong>.<br>`;
+
+      if (co2 < 150) {
+        mensagem += "Excelente! Sua pegada é muito baixa. Continue assim!";
+      } else if (co2 < 300) {
+        mensagem += "Bom! Mas ainda dá para melhorar em transporte e alimentação.";
+      } else {
+        mensagem += "⚠️ Atenção! Considere reduzir o uso de carro e carne vermelha para diminuir sua pegada.";
+      }
+
+      mensagemResultado.innerHTML = mensagem;
+      resultado.style.display = "block";
+    });
+
+    const toggleButton = document.getElementById('toggleTema');
+    const body = document.body;
+
+    if (localStorage.getItem('tema') === 'dark') {
+      body.classList.add('dark');
+    }
+
+    toggleButton.addEventListener('click', () => {
+      body.classList.toggle('dark');
+      const temaAtual = body.classList.contains('dark') ? 'dark' : 'light';
+      localStorage.setItem('tema', temaAtual);
+    });
+  </script>
+</body>
+</html>

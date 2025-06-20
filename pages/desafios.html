@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Desafios Sustentáveis - EcoViva</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="topo">
+      <img src="../images/logo-ecoviva.png" alt="Logo EcoViva" class="logo" />
+      <h1>EcoViva</h1>
+      <nav class="navegacao">
+        <a href="../index.html">Início</a>
+        <a href="dicas.html">Dicas</a>
+        <a href="mapa.html">Mapa</a>
+        <a href="contato.html">Contato</a>
+        <a href="desafios.html">Desafios</a>
+        <a href="denuncias.html">Denúncias</a>
+        <a href="simulador.html">Simulador</a>
+        <button id="toggleTema" style="margin-top: 1rem; padding: 0.5rem 1rem; border-radius: 5px; border: none; background: #a2d149; color: #fff; cursor: pointer;">
+          🌗 Alternar Tema
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>🌱 Metas Sustentáveis</h2>
+
+      <h3>Diárias</h3>
+      <ul>
+        <li>Levar sacolas reutilizáveis ao mercado</li>
+        <li>Passar um dia sem usar descartáveis</li>
+        <li>Separar o lixo reciclável</li>
+      </ul>
+
+      <h3>Semanais</h3>
+      <ul>
+        <li>Comprar de um pequeno produtor local</li>
+        <li>Economizar água em banhos (&lt; 5 minutos)</li>
+        <li>Fazer uma caminhada ao invés de usar transporte motorizado</li>
+      </ul>
+
+      <h3>Mensais</h3>
+      <ul>
+        <li>Participar de um mutirão de limpeza</li>
+        <li>Reduzir o consumo de carne</li>
+        <li>Plantar uma árvore ou tempero em casa</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>🌍 Impacto Sustentável Real</h2>
+      <ul>
+        <li><strong>1 árvore plantada</strong> pode absorver até 150kg de CO₂ por ano.</li>
+        <li><strong>1 garrafa PET reciclada</strong> economiza energia suficiente para manter uma lâmpada acesa por 6 horas.</li>
+        <li><strong>Reduzir 1 banho por semana</strong> de 10 para 5 minutos pode economizar até 500 litros de água/mês.</li>
+        <li><strong>Comprar de agricultores locais</strong> reduz emissões com transporte e fortalece a economia da comunidade.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>🧮 Calculadora de Impacto Pessoal</h2>
+      <p>Digite abaixo seus hábitos e veja como suas escolhas ajudam o planeta:</p>
+
+      <form id="calcForm">
+        <label>
+          Banhos curtos por semana:
+          <input type="number" id="banhos" min="0" required />
+        </label>
+        <br /><br />
+
+        <label>
+          Sacolas plásticas evitadas por semana:
+          <input type="number" id="sacolas" min="0" required />
+        </label>
+        <br /><br />
+
+        <label>
+          Refeições sem carne por semana:
+          <input type="number" id="refeicoes" min="0" required />
+        </label>
+        <br /><br />
+
+        <button type="submit">Calcular Impacto</button>
+      </form>
+
+      <div class="resultado" id="resultado" style="display: none;">
+        <h3>Seu impacto estimado por mês:</h3>
+        <p id="dadosImpacto"></p>
+      </div>
+    </section>
+
+    <div style="text-align: center;">
+      <a href="../pages/quiz.html" class="btn-link">← Se aventure em um quiz divertido</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 EcoViva - Conscientização Sustentável em Brazlândia</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById("calcForm");
+    const resultado = document.getElementById("resultado");
+    const dadosImpacto = document.getElementById("dadosImpacto");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const banhos = parseInt(document.getElementById("banhos").value);
+      const sacolas = parseInt(document.getElementById("sacolas").value);
+      const refeicoes = parseInt(document.getElementById("refeicoes").value);
+
+      const aguaEconomizada = banhos * 70 * 4; // 70L por banho, 4 semanas
+      const plasticoReduzido = sacolas * 4;     // 4 semanas
+      const co2Evitado = refeicoes * 2 * 4;     // 2kg CO₂/refeição, 4 semanas
+
+      dadosImpacto.innerHTML = `
+        💧 <strong>${aguaEconomizada} litros</strong> de água economizados por mês<br>
+        🛍️ <strong>${plasticoReduzido}</strong> sacolas plásticas evitadas<br>
+        🌫️ <strong>${co2Evitado} kg</strong> de CO₂ deixaram de ser emitidos
+      `;
+
+      resultado.style.display = "block";
+    });
+
+    const toggleButton = document.getElementById("toggleTema");
+    const body = document.body;
+
+    if (localStorage.getItem("tema") === "dark") {
+      body.classList.add("dark");
+    }
+
+    toggleButton.addEventListener("click", () => {
+      body.classList.toggle("dark");
+      const temaAtual = body.classList.contains("dark") ? "dark" : "light";
+      localStorage.setItem("tema", temaAtual);
+    });
+  </script>
+</body>
+</html>

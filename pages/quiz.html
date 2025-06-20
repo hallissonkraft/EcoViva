@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quiz Sustentável - EcoViva</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .quiz-container {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #cde0cd;
+      margin-top: 2rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .quiz-question {
+      margin-bottom: 1rem;
+    }
+
+    .quiz-options label {
+      display: block;
+      margin-bottom: 0.6rem;
+    }
+
+    button {
+      background-color: #3a6b35;
+      color: white;
+      border: none;
+      padding: 0.7rem 1.2rem;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #274e22;
+    }
+
+    .resultado-quiz {
+      margin-top: 2rem;
+      padding: 1rem;
+      background: #f0f8f0;
+      border-radius: 6px;
+      border-left: 5px solid #3a6b35;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topo">
+      <img src="../images/logo-ecoviva.png" alt="Logo EcoViva" class="logo">
+      <h1>EcoViva</h1>
+      <nav class="navegacao">
+        <a href="../index.html">Início</a>
+        <a href="dicas.html">Dicas</a>
+        <a href="mapa.html">Mapa</a>
+        <a href="contato.html">Contato</a>
+        <a href="desafios.html">Desafios</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="denuncias.html">Denúncias</a>
+        <a href="simulador.html">Simulador</a>
+        <button id="toggleTema" style="margin-top: 1rem; padding: 0.5rem 1rem; border-radius: 5px; border: none; background: #a2d149; color: #fff; cursor: pointer;">
+          🌗 Alternar Tema
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="quiz-container">
+      <h2>Quiz Sustentável 🌱</h2>
+      <form id="quizForm">
+        <div class="quiz-question">
+          <p><strong>1. Qual dessas atitudes ajuda a economizar água?</strong></p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q1" value="1" /> Fechar a torneira ao escovar os dentes</label>
+            <label><input type="radio" name="q1" value="0" /> Lavar o carro com mangueira aberta</label>
+            <label><input type="radio" name="q1" value="0" /> Tomar banho de banheira todos os dias</label>
+          </div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>2. Qual material é reciclável?</strong></p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q2" value="0" /> Restos de comida</label>
+            <label><input type="radio" name="q2" value="1" /> Garrafa PET</label>
+            <label><input type="radio" name="q2" value="0" /> Papel higiênico usado</label>
+          </div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>3. Qual é a melhor opção para ir ao mercado?</strong></p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q3" value="1" /> Levar sacola reutilizável</label>
+            <label><input type="radio" name="q3" value="0" /> Pedir várias sacolas plásticas</label>
+            <label><input type="radio" name="q3" value="0" /> Usar sacolas novas toda vez</label>
+          </div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>4. Qual destas fontes de energia é renovável?</strong></p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q4" value="0" /> Carvão mineral</label>
+            <label><input type="radio" name="q4" value="1" /> Energia solar</label>
+            <label><input type="radio" name="q4" value="0" /> Petróleo</label>
+          </div>
+        </div>
+
+        <button type="submit">Ver Resultado</button>
+      </form>
+
+      <div id="resultadoQuiz" class="resultado-quiz" style="display: none;"></div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 EcoViva - Conscientização Sustentável em Brazlândia</p>
+  </footer>
+
+  <script>
+    document.getElementById("quizForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      let total = 0;
+      const respostas = document.querySelectorAll("input[type=radio]:checked");
+      respostas.forEach(r => total += parseInt(r.value));
+
+      const resultado = document.getElementById("resultadoQuiz");
+      resultado.style.display = "block";
+
+      let mensagem = "";
+      if (total === 4) {
+        mensagem = "🌟 Parabéns! Você é um verdadeiro guardião da sustentabilidade!";
+      } else if (total >= 2) {
+        mensagem = "👍 Muito bem! Mas ainda há espaço para melhorar seus hábitos.";
+      } else {
+        mensagem = "🔍 Que tal aprender mais sobre atitudes sustentáveis?";
+      }
+
+      resultado.innerHTML = `<h3>Você acertou ${total} de 4 perguntas.</h3><p>${mensagem}</p>`;
+    });
+  </script>
+</body>
+</html>
